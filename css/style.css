@@ -3,6 +3,7 @@
     --color-hover-button: #14326D;
     --color-border-inputs: #dfd7df;
     --color-white: #FFFFFF;
+    --color-error: red;
 }
 
 * {
@@ -54,6 +55,15 @@ input, button {
     border-radius: .25em;
     width: 25em;
     height: 2.125em;
+}
+
+.error {
+    color: var(--color-error);
+    font-size: .75em;
+}
+
+.error input {
+    border-color: var(--color-error);
 }
 
 button {
