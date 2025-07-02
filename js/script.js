@@ -3,6 +3,8 @@ const emailElement = document.querySelector("#email");
 const subjectElement = document.querySelector("#subject");
 const messageElement = document.querySelector("#message");
 const buttonSubmit = document.querySelector("#submit-btn");
+const errorClassElement = "error";
+const errorElement = document.querySelector(`.${errorClassElement}`);
 
 buttonSubmit.addEventListener("click", (event) => {
     event.preventDefault();
@@ -17,15 +19,24 @@ function validateElements() {
     });
 }
 
-function validateInput(element) {
-    const label = document.querySelector(`label[for="${element.id}"]`)
+function validateInput(input) {
+    const label = document.querySelector(`label[for="${element.id}"]`);
+
     if (element.value.trim() == "") {
-        throwError(element, `${label.textContent} não pode ficar em branco!`);
+        throwError(input, `${label.textContent} não pode ficar em branco!`);
+    } else {
+        removeClassError(input);
     }
 }
 
 function throwError(input, errorMessage) {
     const element = input.nextElementSibling;
     element.textContent = errorMessage;
-    input.parentElement.classList.add("error");
+    input.parentElement.classList.add(errorClassElement);
+}
+
+function removeClassError(input) {
+    const element = input.nextElementSibling;
+    element.textContent = "";
+    input.parentElement.classList.remove(errorClassElement);
 }
