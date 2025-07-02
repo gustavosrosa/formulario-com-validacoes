@@ -32,7 +32,6 @@ function validateInput(input, label) {
 }
 
 function validateEmail(element, label) {
-    
     if (validation.test(element.value)) {
         manipulateError("remove", element, "");
     } else {
